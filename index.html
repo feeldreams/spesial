@@ -339,7 +339,7 @@
 	
 	  const papanGame = document.getElementById('papanGame');
 	  papanGame.innerHTML = '';
-	  kartu.forEach((card, index) => {
+	  /*kartu.forEach((card, index) => {
 	    const elemenKartu = document.createElement('div');
 	    elemenKartu.className = 'kartu';
 	    elemenKartu.dataset.id = card.id;
@@ -351,7 +351,22 @@
 	    `;
 	    elemenKartu.addEventListener('click', () => balikKartu(elemenKartu, card, index));
 	    papanGame.appendChild(elemenKartu);
-	  });
+	  });*/
+	  const kartuAcak = acakKartu([...kartu]);
+
+  kartuAcak.forEach((card, index) => {
+    const elemenKartu = document.createElement('div');
+    elemenKartu.className = 'kartu';
+    elemenKartu.dataset.id = card.id;
+    elemenKartu.innerHTML = `
+      <div class="dalemKartu">
+        <div class="depanKartu"></div>
+        <div class="belakangKartu">${card.icon}</div>
+      </div>
+    `;
+    elemenKartu.addEventListener('click', () => balikKartu(elemenKartu, card, index));
+    papanGame.appendChild(elemenKartu);
+  });
 	}
 
     function balikKartu(elemenKartu, card, index) {
